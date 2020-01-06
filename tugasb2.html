@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>tugas b2</title>
+ 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 	<style type="text/css">
+ 		body {
+ 			margin: 0;
+ 			font-family: sans-serif;
+ 			margin-bottom: 500px;
+ 		}
+ 		div {
+ 			box-sizing: border-box;
+ 		}
+ 		#head {
+ 			width: 100%;
+ 			background: #114;
+ 			padding: 20px;
+ 			color: #fff;
+ 			font-size: 30px;
+ 			font-weight: 700;
+ 			margin-bottom: 30px;
+ 			box-sizing: border-box;
+ 			border-bottom: 5px solid #226; 
+ 		}
+ 		#content {
+ 			display: flex;
+ 		}
+ 		#slidedown {
+ 			background: #333;
+ 			padding: 10px 10px;
+ 			display: inline-block;
+ 			color: #fff;
+ 			box-sizing: border-box;
+ 			display: flex;
+ 			align-items: center;
+ 			width: 48px;
+ 		}
+ 		#menup {
+ 			display: none;
+ 			margin: 0;
+ 			margin-left: 15px;
+ 		}
+ 		#menu {
+ 			width: 300px;
+ 			background: #444;
+ 			padding: 10px 20px;
+ 			color: #fff;
+ 			display: none;
+ 			box-sizing: border-box;
+ 		}
+ 		#menu > div {
+ 			border-bottom: 1px solid #ccc;
+ 			padding: 5px;
+ 			margin: 10px 0;
+ 		}
+ 		#slideup {
+ 			border-bottom: none !important;
+ 			text-align: center;
+ 		}
+ 		#settings {
+ 			display: none;
+ 		}
+ 		#main {
+ 			min-width: 1100px;
+ 			margin: auto;
+ 			display: flex;
+ 			flex-wrap: wrap;
+ 		}
+ 		#screen {
+ 			width: 100%;
+ 			background: #55a;
+ 			padding: 20px;
+ 			color: #fff;
+ 			text-align: center;
+ 			font-weight: 700;
+ 			font-size: 25px;
+ 			display: flex;
+ 			align-items: center;
+ 			justify-content: center;
+ 		}
+ 		#screen i {
+ 			margin-left: 20px;
+ 			font-size: 50px;
+ 		}
+ 		#dropcity:hover {
+ 			cursor: pointer; color: #6ed8eb;
+ 		}
+ 		#layar {
+ 			width: 100%;
+ 			background: #59b2ac;
+ 			display: flex ;
+ 			justify-content: center;
+ 			align-items: flex-end;
+ 			flex-wrap: wrap;
+ 			box-sizing: border-box;
+ 			flex-direction: row;
+ 			padding-top: 300px;
+ 			box-sizing: border-box;
+ 			overflow: hidden;
+ 			position: relative;
+ 		}
+ 		.tutuplayar {
+ 			display: none;
+ 			width: 100%;
+ 		}
+ 		#add {
+ 			width: 100%;
+ 			background: #744;
+ 			height: 150px;
+ 			color: #fff;
+ 			padding: 0 15px;
+ 			display: flex;
+ 			align-items: center;
+ 			box-sizing: border-box;
+ 		}
+ 		.langit	{
+ 			width: 100%;
+ 			position: relative;
+ 			left: -520px;
+ 		}
+ 		.sun {
+ 			position: relative;
+ 			left: -240px; top: -250px;
+ 		}
+ 		.sunmid {
+ 			padding: 60px;
+ 			position: absolute;
+ 			background: #ffd64f;
+ 			border-radius: 70px;
+ 			display: inline;
+ 		}
+ 		.awan {
+ 			position: relative;
+ 			display: inline;
+ 		}
+ 		.awan div {
+ 			padding: 30px;
+ 			border-radius: 50px;
+ 			background: #fff;
+ 			display: inline-block;
+ 			position: absolute;
+ 		}
+ 		.awan1 {top: -200px; left: 70px;}
+ 		.awan2 {top: -120px; left: 330px;}
+ 		.awan3 {top: -150px; left: -500px;}
+ 		.awn1 {left: -10px; top: 0px;}
+ 		.awn2 {left: 20px; top: -35px;}
+ 		.awn3 {left: 30px; top: 23px;}
+ 		.awn4 {left: 60px; top: -50px;}
+ 		.awn5 {left: 80px; top: 20px;}
+ 		.awn6 {left: 55px; top: -5px;}
+ 		.awn7 {left: 125px; top: 5px;}
+ 		.awn8 {left: 100px; top: -35px;}
+ 		.bintang {
+ 			display: none;
+ 			position: absolute;
+ 		}
+ 		.btg {
+ 			padding: 5px;
+ 			border-radius: 50px;
+ 			border: 10px solid rgba(34, 64, 72, 0.97);
+ 			background: #dadec4;
+ 			display: inline-block;
+ 			position: absolute;
+ 		}
+ 		.btg1 {left: -500px; top: -250px;}
+ 		.btg2 {left: -455px; top: -235px;}
+ 		.btg3 {left: -480px; top: -55px;}
+ 		.btg4 {left: -390px; top: -255px;}
+ 		.btg5 {left: -360px; top: -265px;}
+ 		.btg6 {left: -240px; top: -215px;}
+ 		.btg7 {left: -320px; top: -170px;}
+ 		.btg8 {left: -280px; top: -185px;}
+ 		.btg9 {left: -240px; top: -100px;}
+ 		.btg10 {left: -165px; top: -165px;}
+ 		.btg11 {left: 290px; top: -178px;}
+ 		.btg12 {left: -110px; top: -210px;}
+ 		.btg13 {left: -30px; top: -220px;}
+ 		.btg14 {left: 450px; top: -234px;}
+ 		.btg15 {left: 270px; top: -350px;}
+ 		.btg16 {left: 320px; top: -203px;}
+ 		.btg17 {left: 60px; top: -290px;}
+ 		.btg18 {left: 10px; top: -192px;}
+ 		.btg19 {left: -60px; top: -130px;}
+ 		.btg20 {left: 20px; top: -170px;}
+ 		.btg21 {left: 230px; top: -268px;}
+ 		.btg22 {left: 260px; top: -238px;}
+ 		.btg22 {left: 260px; top: -138px;}
+ 		.btg23 {left: 370px; top: -264px;}
+ 		.btg24 {left: 480px; top: -214px;}
+ 		.btg25 {left: 120px; top: -100px;}
+ 		.btg26 {left: 180px; top: -80px;}
+ 		.btg27 {left: -260px; top: -45px;}
+ 		.btg28 {left: -390px; top: -35px;}
+ 		.btg29 {left: -200px; top: -25px;}
+ 		.btg30 {left: -210px; top: -270px;}
+ 		.btg31 {left: -320px; top: -80px;}
+ 		.gedung {
+ 			display: flex;
+ 			flex-direction: column;
+ 			padding-bottom: 0;
+ 			margin: 0 10px;
+ 			position: relative;
+ 			top: 410px;
+ 		}
+ 		.jalan {
+ 			width: 100%;
+ 			height: 50px;
+ 			background: #455a55;
+ 			border: 7px solid #5b756c;
+ 			border-right: 0px;
+ 			border-left: 0px;
+ 			margin: 0;
+ 			display: flex;
+ 			justify-content: space-between;
+ 			align-items: center;
+ 			position: relative;
+ 			left: -1200px;
+ 		}
+ 		.garisjalan {
+ 			width: 100%;
+ 			height: 5px;
+ 			margin: 0 10px;
+ 			background: #eee;
+ 		}
+ 		.gedung1 {
+ 			background: #f48a64;
+ 			width: 120px;
+ 		}
+ 		.gedung2 {
+ 			background: #ffeaba;
+ 			width: 160px;
+ 		}
+ 		.gedung3 {
+ 			background: #8debd0;
+ 			width: 180px;
+ 		}
+ 		.atasg1 {
+ 			padding: 10px 68px;
+ 			background: #514640;
+ 			transform: translateX(-8px);
+ 		}
+ 		.atasg2 {
+ 			padding: 8px 90px;
+ 			background: #9b8675;
+ 			transform: translateX(-10px);
+
+ 		}
+ 		.atasg3 {
+ 			padding: 16px 96px;
+ 			background: #465955;
+ 			transform: translateX(-6px);
+
+ 		}
+ 		.mkaca {
+ 			display: flex;
+ 			justify-content: space-between;
+ 			align-items: flex-end;
+ 			flex-wrap: wrap;
+ 			width: 100%;
+ 			padding: 10px;
+ 			box-sizing: border-box;
+ 		}
+ 		.kaca {
+ 			background: #6a837d;
+ 			height: 60px;
+ 			margin-bottom: 10px;
+ 			border-radius: 30px 30px 0 0;
+ 		}
+ 		.kacag1 {
+ 			width: 20%;
+ 			margin: 2%;
+ 			margin-bottom: 10px;
+ 		}
+ 		.kacag2 {
+ 			width: 15%;
+ 			margin: 2%;
+ 			margin-bottom: 12px;
+ 		}
+ 		.kacag3 {
+ 			width: 21%;
+ 			margin: 1%;
+ 			margin-bottom: 10px;
+ 		}
+ 		.kacakot {
+ 			height: 40px;
+ 			border-radius: 0px;
+ 			margin-top: 1.5%;
+ 		}
+ 		.garis {
+ 			margin: 10px 0 5px;
+ 			width: 100%;
+ 		}
+ 		.garisg2 {
+ 			padding: 2px 84px;
+ 			background: #9b8675;
+ 			transform: translateX(-14px);
+ 		}
+ 		.bawah {
+ 			width: 100%;
+ 		}
+ 		.bawahg1 {
+ 			height: 15px;
+ 			background: #514640;
+ 		}
+ 		.bawahg2 {
+ 			height: 17px;
+ 			background: #9b8675;
+ 		}
+ 		.bawahg3 {
+ 			height: 20px;
+ 			background: #465955;
+ 		}
+ 		.mobil {
+ 			position: relative;
+ 			left: -80px; top: -5px;
+ 		}
+ 		.mobil2 {
+ 			position: relative;
+ 			left: -100px; top: -25px;
+ 		}
+ 		.laser {
+ 			position: absolute;
+ 			background: rgba(238, 238, 238, 0.7);
+ 			padding: 0 40px 800px;
+ 			top: -1500px; left: -7px; 
+ 			border-radius: 0 0 7px 7px;
+ 			display: block;
+ 		}
+ 		.mainmobil {
+ 			position: absolute;
+ 			top: 0;
+ 		}
+ 		.bodymobil {
+ 			position: absolute;
+ 			background: #857379;
+ 			padding: 20px 30px 0;
+ 			top: -7px; left: 4.5px;
+ 			border-radius: 15px 15px 0 0;
+ 		}
+ 		.kapmobil {
+ 			position: absolute;
+ 			background: #857379;
+ 			padding: 16px 19px 0;
+ 			top: -20px; left: 16px;
+ 			border-radius: 20px 20px 0 0;
+ 		}
+ 		.ban {
+ 			position: absolute;
+ 			padding: 6px;
+ 			background: #9b9b9b;
+ 			border-radius: 50px;
+ 			border: 4px solid #111;
+ 			display: inline-block;
+ 		}
+ 		.ban1 {
+ 			left: 10px;
+ 		}
+ 		.ban2 {
+ 			left: 40px;
+ 		}
+ 		.concloud {
+ 			text-align: center;
+ 			display: flex;
+ 			flex-direction: column;
+ 			justify-content: space-around;
+ 			align-items: center;
+ 			font-size: 20px;
+ 			background: #522;
+ 			height: 100px;
+ 			padding: 0 20px 10px;
+ 		}
+ 		.consun {
+ 			text-align: center;
+ 			display: flex;
+ 			flex-direction: column;
+ 			justify-content: space-around;
+ 			align-items: center;
+ 			font-size: 20px;
+ 			background: #522;
+ 			height: 100px;
+ 			padding: 0 20px 10px;
+ 			margin-left: 15px;
+ 		}
+ 		.concar {
+ 			text-align: center;
+ 			display: flex;
+ 			flex-direction: column;
+ 			justify-content: space-around;
+ 			align-items: center;
+ 			font-size: 20px;
+ 			background: #522;
+ 			height: 100px;
+ 			padding: 0 20px 10px;
+ 			margin-left: 15px;
+ 		}
+ 		.conclose {
+ 			text-align: center;
+ 			display: flex;
+ 			flex-direction: column;
+ 			justify-content: space-around;
+ 			align-items: center;
+ 			font-size: 20px;
+ 			background: #522;
+ 			height: 100px;
+ 			padding: 0 40px 10px;
+ 			margin-left: auto;
+ 		}
+ 		.car {
+ 			color: white;
+ 		}
+ 		.consun i:hover, .conclose i:hover, .concar i:hover, .car:hover {
+ 			cursor: pointer; color: black;
+ 		}
+ 		#add div i {
+ 			font-size: 30px;
+ 			transform: translateY(8px);
+ 		}
+ 		.kotabg{
+ 			width: 100%;
+ 			display: flex;
+ 			justify-content: center;
+ 			align-items: flex-end;
+ 			position: absolute;
+ 			top: 750px;
+ 			box-sizing: border-box;
+ 			z-index: 0;
+ 		}
+ 		.kotabg div {
+ 			display: inline-block;
+ 			margin: 0 5px;
+ 		}
+ 		.kbg {
+ 			background: #555;
+ 		}
+ 		.kbg1 {
+ 			height: 440px;
+ 			width: 180px;
+ 		}
+ 		.kbg2 {
+ 			height: 410px;
+ 			width: 140px;
+ 		}
+ 		.kbg3 {
+ 			height: 330px;
+ 			width: 200px;
+ 		}
+ 		.kbg4 {
+ 			height: 380px;
+ 			width: 160px;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<div id="head">jQuery</div>
+ 	<div id="content">
+	 	<div id="side">
+		 	<div id="slidedown"><i class="material-icons">menu</i><p id="menup">MENU</p></div>
+		 	<div id="menu">
+		 		<div id="slidetoggle">Settings</div>
+		 		<div id="settings">
+			 		<div id="">tau</div>
+			 		<div id="">tae</div>
+			 		<div id="">tai</div>
+			 	</div>
+		 		<div id="slideup"><i class="material-icons">close</i></div>
+		 	</div>
+		 </div>
+
+		 <div id="main">
+		 	<div id="screen">GomGom City <i id="dropcity" class="material-icons">
+arrow_drop_down_circle
+</i></div>
+			<div class="tutuplayar">
+				<div id="add">	
+					<div class="concloud">
+						<div><i class="material-icons">cloud</i> CLOUD</div>
+					</div>		
+					<div class="consun">
+						<div><i class="material-icons skipsunleft">skip_previous</i><i class="material-icons sunleft">keyboard_arrow_left</i><i class="material-icons sunstop">stop</i> SUN <i class="material-icons sunclose">close</i><i class="material-icons sunright">keyboard_arrow_right</i><i class="material-icons skipsunright">skip_next</i></div>
+					</div>
+					<div class="concar">
+						<div><i class="material-icons skipcarleft">skip_previous</i><i class="material-icons carleft">keyboard_arrow_left</i><i class="material-icons carstop">stop</i><span class="car"> CAR </span><i class="material-icons carclose">close</i><i class="material-icons carright">keyboard_arrow_right</i><i class="material-icons skipcarright">skip_next</i></div>
+					</div>			
+					<div class="conclose">
+						<i class="material-icons closecity">close</i>
+					</div>
+				</div>
+				<div id="layar">
+					<div class="kotabg">
+						<div class="kbg kbg3"></div><div class="kbg kbg1"></div><div class="kbg kbg4"></div><div class="kbg kbg2"></div>
+					</div>
+				 	<div class="langit">
+					 	<div class="awan awan1">
+					 		<div class="awen awn1"></div><div class="awen awn2"></div><div class="awen awn3"></div><div class="awen awn4"></div><div class="awen awn5"></div><div class="awen awn6"></div><div class="awen awn7"></div><div class="awen awn8"></div>
+					 	</div>
+					 	<div class="sun">
+					 		<div class="sunmid"></div>
+					 	</div>
+				 		<div class="awan awan3">
+					 		<div class="awen awn1"></div><div class="awen awn2"></div><div class="awen awn3"></div><div class="awen awn4"></div><div class="awen awn5"></div><div class="awen awn6"></div><div class="awen awn7"></div><div class="awen awn8"></div>
+					 	</div>
+					 	<div class="awan awan2">
+					 		<div class="awen awn1"></div><div class="awen awn2"></div><div class="awen awn3"></div><div class="awen awn4"></div><div class="awen awn5"></div><div class="awen awn6"></div><div class="awen awn7"></div><div class="awen awn8"></div>
+					 	</div>
+					 	<div class="bintang">
+					 		<div class="btg btg1"></div><div class="btg btg2"></div><div class="btg btg3"></div><div class="btg btg4"></div><div class="btg btg5"></div><div class="btg btg6"></div><div class="btg btg7"></div><div class="btg btg8"></div><div class="btg btg9"></div><div class="btg btg10"></div><div class="btg btg11"></div><div class="btg btg12"></div><div class="btg btg13"></div><div class="btg btg14"></div><div class="btg btg15"></div><div class="btg btg16"></div><div class="btg btg17"></div><div class="btg btg18"></div><div class="btg btg19"></div><div class="btg btg20"></div><div class="btg btg21"></div><div class="btg btg22"></div><div class="btg btg23"></div><div class="btg btg24"></div><div class="btg btg25"></div><div class="btg btg26"></div><div class="btg btg27"></div><div class="btg btg28"></div><div class="btg btg29"></div><div class="btg btg30"></div><div class="btg btg31"></div>
+					 	</div>
+					 </div>
+				 	<div class="gedung gedung3">
+				 		<div class="atasg3"></div>
+				 		<div class="mkaca">
+					 		<div class="kaca kacag3"></div><div class="kaca kacag3"></div><div class="kaca kacag3"></div><div class="kaca kacag3"></div>
+					 		<div class="kaca kacag3"></div><div class="kaca kacag3"></div><div class="kaca kacag3"></div><div class="kaca kacag3"></div>
+					 		<div class="kaca kacag3 kacakot"></div><div class="kaca kacag3 kacakot"></div><div class="kaca kacag3 kacakot"></div><div class="kaca kacag3 kacakot"></div>
+					 	</div>
+				 		<div class="bawah bawahg3"></div>
+				 	</div>
+				 	<div class="gedung gedung1">
+				 		<div class="atasg1"></div>
+				 		<div class="mkaca">
+					 		<div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div>
+					 		<div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div>
+					 		<div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div>
+					 		<div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div><div class="kaca kacag1"></div>
+					 	</div>
+				 		<div class="bawah bawahg1"></div>
+				 	</div>
+				 	<div class="gedung gedung2">
+				 		<div class="atas atasg2"></div>
+				 		<div class="mkaca">
+					 		<div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div>
+					 		<div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div>
+					 		<div class="kaca kacag2"></div><div class="kaca kacag2"></div>
+					 		<div class="garis garisg2"></div>
+					 		<div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div><div class="kaca kacag2"></div>
+					 	</div>
+				 		<div class="bawah bawahg2"></div>
+				 	</div>
+				 	<div class="jalan jalan1">
+				 		<div class="mobil2">
+				 			<div class="mainmobil">	
+					 			<div class="bodymobil"></div>
+						 		<div class="kapmobil"></div>
+						 		<div class="ban ban1"></div><div class="ban ban2"></div>
+						 	</div>
+				 			<div class="laser"></div>
+				 		</div>
+				 		<div class="mobil">
+				 			<div class="mainmobil">	
+					 			<div class="bodymobil"></div>
+						 		<div class="kapmobil"></div>
+						 		<div class="ban ban1"></div><div class="ban ban2"></div>
+						 	</div>
+				 			<div class="laser"></div>
+				 		</div>
+				 		<div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div><div class="garisjalan"></div>
+				 	</div>
+				 </div>
+			</div>
+		</div>
+		
+	</div>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+ 	<script type="text/javascript">
+ 		$(document).ready(function(){
+ 			$("#slidedown").click(function(){
+ 				$("#slidedown").animate({
+ 					width: '300px',
+ 					padding: '25px 15px',
+ 					opacity: '0.8',
+ 					color: '#000000'
+ 				});
+ 				$("#menu").slideDown('slow');
+ 				$("#menup").fadeIn('slow');
+
+ 			});
+
+ 			$("#slidetoggle").click(function(){
+ 				$("#settings").slideToggle('slow');
+ 			});
+
+ 			$("#slideup").click(function(){
+ 				$("#menu").slideUp('slow');
+ 				$("#slidedown").animate({
+ 					width: '48px',
+ 					padding: '10px 10px',
+ 					opacity: '1'
+ 				});
+ 				$("#menup").fadeOut('slow');
+ 			});
+
+ 			$("#dropcity").click(function(){
+ 				$(".tutuplayar").slideDown("slow");
+ 				$(".jalan").stop(true, true).delay(700).animate({
+ 					left: '0px'
+ 				},800);
+ 				$(".gedung").stop(true, true).delay(1500).animate({
+ 					top: '0px'
+ 				},500);
+
+	 			$(".kotabg").stop(true, true).delay(2000).animate({
+	 			top: '210px'
+	 			},500); 
+
+	 			$(".langit").stop(true, true).delay(2500).animate({
+	 			left: '550px'
+	 			},1200); 
+
+ 			// 	for (var i = 3; i >= 0; i--) {
+ 		
+	 		// 		$(".langit").animate({
+	 		// 		top: '-=500px'
+	 		// 		},100);
+
+	 		// 		$(".langit").animate({
+	 		// 		left: '-=1700px'
+	 		// 		},100);	
+
+	 		// 		$(".langit").animate({
+	 		// 		top: '+=500px'
+	 		// 		},100);	
+
+	 		// 		$(".langit").animate({
+	 		// 		left: '+=1700px'
+	 		// 		},10000); 
+	 		// 		}	
+
+	 			function car() {
+	 			$(".mobil").stop(true, true).delay(4500).animate({
+	 			left: '1250px'
+	 			},2500)
+	 			.animate({
+	 				left : "-100px"
+	 			},2500,car); 
+	 			}
+	 			car();
+
+	 			function car2() {
+	 			$(".mobil2").stop(true, true).delay(6200).animate({
+	 			left: '1200px'
+	 			},2500)
+	 			.animate({
+	 				left : "-100px"
+	 			},2500,car2); 
+	 			}
+	 			car2();
+ 			});
+ 			$(".closecity").click(function(){
+
+ 				$(".mobil").animate({
+	 			left: '-550px'
+	 			},700);  
+	 			$(".mobil").stop();
+	 			$(".mobil2").animate({
+	 			left: '-550px'
+	 			},800);  
+	 			$(".mobil2").stop();
+
+	 			$(".langit").stop(true, true).delay(100).animate({
+	 			left: '-550px'
+	 			},1200);  
+
+	 			$(".kotabg").stop(true, true).delay(1200).animate({
+	 			top: '750px'
+	 			},500); 
+
+ 				$(".gedung").stop(true, true).delay(1700).animate({
+ 					top: '410px'
+ 				},500);
+
+ 				$(".jalan").stop(true, true).delay(2400).animate({
+ 					left: '-1200px'
+ 				},800);
+
+ 				 $(".tutuplayar").stop(true, true).delay(3200).slideUp("slow");
+
+ 			});
+
+ 			$(".concloud").click(function(){
+ 				$(".langit").stop();
+ 			});
+
+ 			$(".sunleft").click(function(){
+ 				$(".sun").animate({
+ 					left: "-=150px"
+ 				},800);
+ 			});
+ 			$(".skipsunleft").click(function(){
+ 				$(".sun").animate({
+ 					left: "-=1000px"
+ 				},3800);
+ 			});
+ 			$(".sunright").click(function(){
+ 				$(".sun").animate({
+ 					left: "+=150px"
+ 				},800);
+ 			});
+ 			$(".skipsunright").click(function(){
+ 				$(".sun").animate({
+ 					left: "+=1000px"
+ 				},3800);
+ 			});
+ 			$(".sunstop").click(function(){
+ 				$(".sun").stop();
+ 			});
+ 			$(".sunclose").click(function(){
+ 					alert("matahari telah lenyap");
+ 				$(".sun").hide('slow');
+ 				$("#layar").css("background-color","#224048")
+ 				$(".gedung1, .atasg1, .bawahg1").css("background-color","#033655")
+ 				$(".gedung2, .atasg2, .bawahg2, .garisg2").css("background-color","#084c75")
+ 				$(".gedung3, .atasg3, .bawahg3").css("background-color","#005f99")
+ 				$(".kbg").css("background-color","#1a2f34")
+ 				$(".kaca").css("background-color","#eeedcf")
+ 				$(".awen").css("background-color","#5a7e99")
+ 				$(".bintang").fadeIn(7300);
+ 			});
+
+ 			$(".carleft").click(function(){
+ 				$(".mobil").animate({
+ 					left: "-=150px"
+ 				},800);
+ 				$(".mobil2").animate({
+ 					left: "-=100px"
+ 				},600);
+ 			});
+ 			$(".skipcarleft").click(function(){
+ 				$(".mobil").animate({
+ 					left: "-=1000px"
+ 				},3800);
+ 				$(".mobil2").animate({
+ 					left: "-=600px"
+ 				},2500);
+ 			});
+ 			$(".carright").click(function(){
+ 				$(".mobil").animate({
+ 					left: "+=150px"
+ 				},800);$(".mobil2").animate({
+ 					left: "+=100px"
+ 				},600);
+ 			});
+ 			$(".skipcarright").click(function(){
+ 				$(".mobil").animate({
+ 					left: "+=1000px"
+ 				},3800);
+ 				$(".mobil2").animate({
+ 					left: "+=600px"
+ 				},2500);
+ 			});
+ 			$(".carstop").click(function(){
+ 				$(".mobil").stop();
+ 				$(".mobil2").stop();
+ 			});
+
+ 			$(".carclose").click(function(){
+ 				$('.laser').animate({
+ 					top: "-780px"
+ 				},3000);
+ 				$('.mainmobil').stop(true, true).delay(800).animate({
+ 					top: "-1000px"
+ 				},3000);
+ 				$('.laser').stop(true, true).delay(3000).animate({
+ 					top: "-1500px"
+ 				},500);
+ 			});
+
+ 			$(".car").click(function(){
+ 				$('.laser').animate({
+ 					top: "-780px"
+ 				},3000);
+ 				$('.mainmobil').stop(true, true).delay(800).animate({
+ 					top: "0px"
+ 				},3000);
+ 				$('.laser').stop(true, true).delay(3800).animate({
+ 					top: "-1500px"
+ 				},500);
+ 			});
+ 			
+ 		});
+ 	</script>
+ </body>
+ </html>
